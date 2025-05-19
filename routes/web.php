@@ -8,3 +8,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 route::get('/',[MovieController::class, 'homepage']);
+
+Route::get('/detail/{id}/{slug}', [MovieController::class, 'show']);
+
