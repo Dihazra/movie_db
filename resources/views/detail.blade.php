@@ -1,21 +1,20 @@
 @extends('layouts.template')
 
 @section('content')
-<div class="container my-4">
-    <div class="row g-4 align-items-start">
-        <div class="col-md-4">
-            <img src="{{ $movie->cover_image }}" class="img-fluid rounded" alt="{{ $movie->title }}">
-        </div>
-        <div class="col-md-8">
-            <h2 class="fw-bold">{{ $movie->title }} <span class="badge bg-secondary">{{ $movie->year }}</span></h2>
-            <p class="text-muted mb-1">
-                <strong>Actors:</strong> {{ $movie->actors }}
-            </p>
-            <p>
-                {{ Str::words($movie->synopsis) }}
-            </p>
-            <a href="/" class="btn btn-outline-secondary mt-3">← Back to List</a>
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ asset('storage/'.$movie->cover_image) }}" class="img-fluid rounded-start" alt="...">            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">{{ $movie->title }}</h3>
+                    <p class="card-text">{{ $movie->synopsis }}</p>
+                    <p><strong>Actors:</strong> {{ $movie->actors }}</p>
+                    <p><strong>Category:</strong> {{ $movie->category->category_name }}</p>
+                    <p><strong>Year:</strong> {{ $movie->year }}</p>
+                    <a href="{{ url()->previous() }}" class="btn btn-success">Back</a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 @endsection
