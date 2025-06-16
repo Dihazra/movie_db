@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MovieController;
+use App\Http\Middleware\RoleAdmin;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 use function Pest\Laravel\get;
@@ -24,9 +26,9 @@ Route::post('/login',[AuthController::class,'login']);
 
 Route::post('/logout',[AuthController::class,'logout']);
 
-Route::get('/edit-movie/{id}', [MovieController::class, 'edit']);
+Route::get('/edit-movie/{id}', [MovieController::class, 'edit'])->middleware('auth', RoleAdmin::class);
 
-Route::put('/update-movie/{id}', [MovieController::class, 'update']);
+Route::put('/update-movie/{id}', [MovieController::class, 'update'])->middleware('auth', RoleAdmin::class);
 
-Route::delete('/delete-movie/{id}', [MovieController::class, 'destroy']);
+Route::delete('/delete-movie/{id}', [MovieController::class, 'destroy'])->middleware('auth', RoleAdmin::class);
 
