@@ -13,6 +13,13 @@
                     <p><strong>Category:</strong> {{ $movie->category->category_name }}</p>
                     <p><strong>Year:</strong> {{ $movie->year }}</p>
                     <a href="{{ url()->previous() }}" class="btn btn-success">Back</a>
+                    <a href="{{ url('/edit-movie/' . $movie->id) }}" class="btn btn-warning">Edit</a>
+
+                    <form action="{{ url('/delete-movie/' . $movie->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" onclick="return confirm('Yakin ingin menghapus film ini?')" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>

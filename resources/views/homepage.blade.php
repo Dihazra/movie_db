@@ -28,13 +28,13 @@
         <div class="card mb-3">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{ $movie->cover_image }}" class="img-fluid rounded-start" alt="...">
+      <img src="{{ asset('storage/' . $movie->cover_image) }}" class="img-fluid rounded-start" alt="{{ $movie->title }}">
     </div>
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ $movie->title }}</h5>
         <p class="card-text">{{ Str::words($movie->synopsis, 20 ,'...') }}</p>
-        <a href="" class="btn text-white bg-success">See More</a>
+        <a href="{{ route('movies.detail', $movie->id) }}" class="btn btn-success">See More</a>
       </div>
     </div>
   </div>

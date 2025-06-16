@@ -24,3 +24,9 @@ Route::post('/login',[AuthController::class,'login']);
 
 Route::post('/logout',[AuthController::class,'logout']);
 
+Route::get('/edit-movie/{id}', [MovieController::class, 'edit']);
+
+Route::put('/update-movie/{id}', [MovieController::class, 'update']);
+
+Route::delete('/delete-movie/{id}', [MovieController::class, 'destroy']);
+
